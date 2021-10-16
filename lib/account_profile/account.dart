@@ -8,19 +8,28 @@ import 'package:lab_2_try/account_profile/element/filter_section.dart';
 import 'package:lab_2_try/account_profile/element/first_img_section.dart';
 import 'package:lab_2_try/account_profile/element/game_achieve_list.dart';
 import 'package:lab_2_try/account_profile/element/rank_section.dart';
+import 'package:lab_2_try/main.dart';
 import 'package:lab_2_try/navigation/bottom_navigation.dart';
 
 Widget _iconAppBar(BuildContext context, String icon, double width) {
-  return Container(
-    margin: const EdgeInsets.only(
-      left: 10.0,
-      right: 10.0,
+  return InkWell(
+    child: Container(
+      margin: const EdgeInsets.only(
+        left: 10.0,
+        right: 10.0,
+      ),
+      height: width * 0.125,
+      width: width * 0.125,
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(100)),
+          image: DecorationImage(image: AssetImage(icon), fit: BoxFit.cover)),
     ),
-    height: width * 0.125,
-    width: width * 0.125,
-    decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(100)),
-        image: DecorationImage(image: AssetImage(icon), fit: BoxFit.cover)),
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const MyApp()),
+      );
+    },
   );
 }
 
@@ -58,9 +67,11 @@ class Account extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-
         automaticallyImplyLeading: false,
-        toolbarHeight: (MediaQuery.of(context).orientation == Orientation.landscape)?phoneSize.width*0.11:phoneSize.height*0.11,
+        toolbarHeight:
+            (MediaQuery.of(context).orientation == Orientation.landscape)
+                ? phoneSize.width * 0.11
+                : phoneSize.height * 0.11,
         backgroundColor: CupertinoColors.quaternaryLabel,
         title: Container(
           alignment: Alignment.centerRight,
