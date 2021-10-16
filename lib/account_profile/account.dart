@@ -58,7 +58,9 @@ class Account extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+
         automaticallyImplyLeading: false,
+        toolbarHeight: (MediaQuery.of(context).orientation == Orientation.landscape)?phoneSize.width*0.11:phoneSize.height*0.11,
         backgroundColor: CupertinoColors.quaternaryLabel,
         title: Container(
           alignment: Alignment.centerRight,
