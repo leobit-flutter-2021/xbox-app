@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_stack/image_stack.dart';
 import 'package:lab_2_try/social_view/element/utils.dart';
+
 import '../../object/friends_obj.dart';
 
 class OnlineFriends extends StatelessWidget {

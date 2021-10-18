@@ -8,8 +8,8 @@ import 'package:lab_2_try/account_profile/element/filter_section.dart';
 import 'package:lab_2_try/account_profile/element/first_img_section.dart';
 import 'package:lab_2_try/account_profile/element/game_achieve_list.dart';
 import 'package:lab_2_try/account_profile/element/rank_section.dart';
-import 'package:lab_2_try/main.dart';
 import 'package:lab_2_try/navigation/bottom_navigation.dart';
+import 'package:lab_2_try/settings/settings_view.dart';
 
 Widget _iconAppBar(BuildContext context, String icon, double width) {
   return InkWell(
@@ -27,7 +27,7 @@ Widget _iconAppBar(BuildContext context, String icon, double width) {
     onTap: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const MyApp()),
+        MaterialPageRoute(builder: (context) => const Settings()),
       );
     },
   );

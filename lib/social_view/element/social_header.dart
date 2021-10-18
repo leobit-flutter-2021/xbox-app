@@ -12,13 +12,13 @@ class SocialHeader extends StatelessWidget {
             ? 0.40
             : 0.23;
     EdgeInsets orientationPadding =
-    (MediaQuery.of(context).orientation == Orientation.landscape)
-        ? const EdgeInsets.symmetric(vertical: 10, horizontal: 40)
-        : const EdgeInsets.symmetric(vertical: 20, horizontal: 10);
+        (MediaQuery.of(context).orientation == Orientation.landscape)
+            ? const EdgeInsets.symmetric(vertical: 10, horizontal: 40)
+            : const EdgeInsets.symmetric(vertical: 20, horizontal: 10);
     double orientationIconSize =
-    (MediaQuery.of(context).orientation == Orientation.landscape)
-        ? 0.25
-        : 0.3;
+        (MediaQuery.of(context).orientation == Orientation.landscape)
+            ? 0.25
+            : 0.3;
     return Container(
       padding: orientationPadding,
       height: deviceSize.height * orientationHeight,

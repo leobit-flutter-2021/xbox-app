@@ -15,6 +15,7 @@ class Social extends StatelessWidget {
             : 0.2;
     return Scaffold(
       appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.black,
           title: const SocialHeader(),
           toolbarHeight:
