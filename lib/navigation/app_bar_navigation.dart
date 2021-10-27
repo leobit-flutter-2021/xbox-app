@@ -31,13 +31,13 @@ class AppBarNavigation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _iconAppBar(
-                  context, "assets/images/img_2.png", heightDevice.width),
+                  context, "assets/images/img_xbox.png", heightDevice.width),
               Row(
                 children: [
                   _iconAppBar(
-                      context, "assets/images/img_3.png", heightDevice.width),
+                      context, "assets/images/img_connect_to_xbox.png", heightDevice.width),
                   _iconAppBar(
-                      context, "assets/images/img_4.png", heightDevice.width)
+                      context, "assets/images/img_notification.png", heightDevice.width)
                 ],
               )
             ]));
