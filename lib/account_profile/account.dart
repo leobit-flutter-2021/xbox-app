@@ -38,10 +38,10 @@ Widget _totalScore() {
       alignment: Alignment.centerLeft,
       child: Row(
         children: [
-          const Icon(
+           const Icon(
             Icons.score_outlined,
             size: 28,
-            color: Color(0xFFf2f2f2),
+            color: Colors.white,
           ),
           Container(
             margin: const EdgeInsets.all(5),
@@ -78,7 +78,7 @@ class Account extends StatelessWidget {
           child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: _iconAppBar(
-                  context, "assets/images/img_7.png", orientationWidth)),
+                  context, "assets/images/img_settings_btn.png", orientationWidth)),
         ),
       ),
       extendBodyBehindAppBar: true,

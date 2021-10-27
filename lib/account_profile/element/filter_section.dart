@@ -21,7 +21,7 @@ Widget _appearButton(
       style: TextStyle(
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
-          color: const Color(0xFFf2f2f2)),
+          color: Colors.white),
     ),
   );
 }
@@ -47,8 +47,8 @@ Widget _filterSection(
         _appearButton(context, "COMPARE", phoneSize, fontSize),
         Row(
           children: [
-            _filterIcon("assets/images/img_9.png", orientationWidth),
-            _filterIcon("assets/images/img_10.png", orientationWidth),
+            _filterIcon("assets/images/img_filter_btn.png", orientationWidth),
+            _filterIcon("assets/images/img_sort_btn.png", orientationWidth),
           ],
         )
       ],

@@ -28,10 +28,12 @@ Decoration _customBoxDecoration(begin, end) {
       gradient: LinearGradient(
         begin: begin,
         end: end,
-        colors: const [
-          Color(0xFF057F0B),
-          Color(0xFF3A4BE5),
-          Color(-143702572),
+        colors:  [
+          Colors.blueGrey .shade700,
+          Colors.blue.shade800,
+          Colors.deepPurpleAccent.shade200
+
+
         ],
       ));
 }

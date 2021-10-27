@@ -36,8 +36,8 @@ class SocialHeader extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
-                      CircleIcon("assets/images/img_11.png"),
-                      CircleIcon("assets/images/img_12.png")
+                      CircleIcon("assets/images/img_voice_chat_btn.png"),
+                      CircleIcon("assets/images/img_note_btn.png")
                     ],
                   ))
             ],

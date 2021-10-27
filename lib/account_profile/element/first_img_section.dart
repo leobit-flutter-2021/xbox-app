@@ -15,7 +15,7 @@ Widget _userIcon(double orientationWidth) {
         ),
         borderRadius: const BorderRadius.all(Radius.circular(100)),
         image: const DecorationImage(
-            image: AssetImage("assets/images/img_5.png"), fit: BoxFit.cover)),
+            image: AssetImage("assets/images/img_fallout.png"), fit: BoxFit.cover)),
   );
 }
 
@@ -30,7 +30,7 @@ Widget _userText(Size phoneSize) {
               alignment: Alignment.centerLeft,
               child: Text(
                 "DenMaster26",
-                style: TextStyle(fontSize: 21, color: Color(0xFFf2f2f2)),
+                style: TextStyle(fontSize: 21, color: Colors.white),
               )),
         ),
         Container(
@@ -39,7 +39,7 @@ Widget _userText(Size phoneSize) {
             alignment: Alignment.centerLeft,
             child: Text(
               "Xbox App",
-              style: TextStyle(fontSize: 15, color: Color(0xFFf2f2f2)),
+              style: TextStyle(fontSize: 15, color:Colors.white),
             ),
           ),
         )
@@ -65,7 +65,7 @@ Widget _appearButton(String text, Size phoneSize, double fontSize) {
       style: TextStyle(
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
-          color: const Color(0xFFf2f2f2)),
+          color:Colors.white),
     ),
   );
 }
@@ -86,7 +86,7 @@ Widget _underlineText(String text, double fontSize, bool addLine) {
       child: Text(
         text,
         style: TextStyle(
-          color: const Color(0xFFf2f2f2),
+          color: Colors.white,
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
         ),
@@ -141,7 +141,7 @@ class FirstSectionWithUserInfo extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(),
           image: const DecorationImage(
-              image: AssetImage("assets/images/img_5.png"), fit: BoxFit.cover)),
+              image: AssetImage("assets/images/img_fallout.png"), fit: BoxFit.cover)),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
         child: Column(

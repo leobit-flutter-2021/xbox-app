@@ -5,7 +5,7 @@ import 'package:lab_2_try/object/games_obj.dart';
 Widget _achieveNumber(String text) {
   return Text(text,
       style: const TextStyle(
-          fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFFf2f2f2)));
+          fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white));
 }
 
 Widget _achieveBlock(BuildContext context, String score, String winnerCup,
@@ -19,7 +19,7 @@ Widget _achieveBlock(BuildContext context, String score, String winnerCup,
       children: [
         Row(
           children: [
-            const Icon(Icons.score_outlined, color: Color(0xFFf2f2f2)),
+            const Icon(Icons.score_outlined, color: Colors.white),
             _achieveNumber(score)
           ],
         ),
@@ -27,7 +27,7 @@ Widget _achieveBlock(BuildContext context, String score, String winnerCup,
           children: [
             const Icon(
               Icons.local_bar_outlined,
-              color: Color(0xFFf2f2f2),
+              color: Colors.white,
             ),
             _achieveNumber(winnerCup)
           ],
@@ -76,7 +76,7 @@ Widget _gameItemInfo(BuildContext context, String title, String icon,
                   style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFFf2f2f2)),
+                      color: Colors.white),
                 ),
               ),
               _achieveBlock(context, score, winnerCup, percentAchieve),

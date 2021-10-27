@@ -24,7 +24,7 @@ Widget _shortUserInfo(BuildContext context) {
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(100)),
               image: DecorationImage(
-                  image: AssetImage("assets/images/img_5.png"),
+                  image: AssetImage("assets/images/img_fallout.png"),
                   fit: BoxFit.cover)),
         ),
         Container(
