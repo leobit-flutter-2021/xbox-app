@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lab_2_try/object/games_obj.dart';
 
-
 Widget _imageContainerSecond(BuildContext context, String link, String gameName,
     String gameShortDescription) {
   var phoneSize = MediaQuery.of(context).size;
@@ -25,7 +24,7 @@ Widget _imageContainerSecond(BuildContext context, String link, String gameName,
             image: DecorationImage(image: AssetImage(link), fit: BoxFit.cover)),
       ),
       Row(children: [
-        Container(
+        SizedBox(
           width: (MediaQuery.of(context).orientation == Orientation.landscape)
               ? phoneSize.width * 0.12
               : phoneSize.width * 0.2,

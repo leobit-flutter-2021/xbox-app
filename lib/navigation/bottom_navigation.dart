@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lab_2_try/account_profile/account.dart';
 import 'package:lab_2_try/main.dart';
+import 'package:lab_2_try/social_view/social.dart';
 
 Widget _iconBottom(
     BuildContext context, IconData icon, double height, Widget page) {
@@ -36,13 +38,13 @@ class BottomAppBarNavigation extends StatelessWidget {
                 _iconBottom(context, Icons.home_filled, heightDevice.height,
                     const MyApp()),
                 _iconBottom(context, Icons.people_sharp, heightDevice.height,
-                    const  MyApp()),
+                    const Social()),
                 _iconBottom(context, Icons.search_sharp, heightDevice.height,
-                    const  MyApp()),
+                    const MyApp()),
                 _iconBottom(context, Icons.storage_rounded, heightDevice.height,
-                    const  MyApp()),
+                    const MyApp()),
                 _iconBottom(context, Icons.supervised_user_circle,
-                    heightDevice.height, const  MyApp()),
+                    heightDevice.height, const Account()),
               ])),
     );
   }
