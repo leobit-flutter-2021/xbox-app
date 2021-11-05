@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:lab_2_try/navigation/app_bar_navigation.dart';
 import 'package:lab_2_try/navigation/bottom_navigation.dart';
 
+import '../states.dart';
 import 'element/circle_img_text.dart';
 import 'element/picture_with_description.dart';
 import 'element/small_picture.dart';
+import 'package:lab_2_try/actions.dart' as action;
+import 'element/row_with_status.dart';
 
 Widget _textContainer(BuildContext context, String mainText, String secondText) {
   return Container(
@@ -88,6 +92,30 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Widget statusButton(stat) {
+    return StoreConnector<StatusState, OnStatusChanged>(
+      converter: (store) {
+        return (status) => store.dispatch(action.OnlineAction(status));
+      },
+      builder: (context, callback) {
+        return FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () => callback(stat));
+      },
+    );
+  }
+
+  Widget statusShow() {
+    return StoreConnector<StatusState, String>(
+      converter: (store) => store.state.status.toString(),
+      builder: (context, viewModel) {
+        return Text(
+            viewModel,
+            style: const TextStyle(color: Colors.white));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,6 +128,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: <Widget>[
               const PictureWithDescription(),
+              rowWithDescription(),
               _textContainer(context, "Official posts from games", ""),
               const CircleImgWithText(),
               _textContainer(context, "Game settings", ""),
@@ -119,3 +148,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+typedef OnStatusChanged = Function(bool status);

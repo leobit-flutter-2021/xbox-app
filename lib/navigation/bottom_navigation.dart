@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lab_2_try/account_profile/account.dart';
-import 'package:lab_2_try/main.dart';
+import 'package:lab_2_try/main_view/home.dart';
 import 'package:lab_2_try/social_view/social.dart';
 
 Widget _iconBottom(
@@ -26,26 +26,29 @@ class BottomAppBarNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var heightDevice = MediaQuery.of(context).size;
-    return BottomAppBar(
-      color: CupertinoColors.darkBackgroundGray,
-      child: SizedBox(
-          height: heightDevice.height * 0.075,
-          width: heightDevice.width,
-          child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _iconBottom(context, Icons.home_filled, heightDevice.height,
-                    const MyApp()),
-                _iconBottom(context, Icons.people_sharp, heightDevice.height,
-                    const Social()),
-                _iconBottom(context, Icons.search_sharp, heightDevice.height,
-                    const MyApp()),
-                _iconBottom(context, Icons.storage_rounded, heightDevice.height,
-                    const MyApp()),
-                _iconBottom(context, Icons.supervised_user_circle,
-                    heightDevice.height, const Account()),
-              ])),
-    );
+        return BottomAppBar(
+          color: CupertinoColors.darkBackgroundGray,
+          child: SizedBox(
+              height: heightDevice.height * 0.075,
+              width: heightDevice.width,
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _iconBottom(context, Icons.home_filled, heightDevice.height,
+                        const HomePage()),
+                    _iconBottom(
+                        context, Icons.people_sharp, heightDevice.height,
+                        const Social()),
+                    _iconBottom(
+                        context, Icons.search, heightDevice.height,
+                        const HomePage()),
+                    _iconBottom(
+                        context, Icons.storage_rounded, heightDevice.height,
+                        const HomePage()),
+                    _iconBottom(context, Icons.supervised_user_circle,
+                        heightDevice.height, const Account()),
+                  ])),
+        );
   }
 }
