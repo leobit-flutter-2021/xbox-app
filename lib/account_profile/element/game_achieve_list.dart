@@ -89,7 +89,7 @@ Widget _gameItemInfo(BuildContext context, String title, String icon,
                   border: Border(
                     bottom: BorderSide(
                       width: 5.0,
-                      color: Colors.white24,
+                      color: Colors.white70,
                     ),
                   ),
                 ),
@@ -102,16 +102,27 @@ Widget _gameItemInfo(BuildContext context, String title, String icon,
   );
 }
 
-class GameAchieveSection extends StatelessWidget {
-  const GameAchieveSection({Key? key}) : super(key: key);
+class GameAchieveSection extends StatefulWidget {
+  final List<GameContent> obj;
 
+  const GameAchieveSection({Key? key, required this.obj}) : super(key: key);
+
+  @override
+  _GameAchieveSectionState createState() => _GameAchieveSectionState();
+}
+
+class _GameAchieveSectionState extends State<GameAchieveSection> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: games
-          .map((game) => _gameItemInfo(context, game.title, game.icon,
-              game.score, game.winnerCup, game.percentAchieve))
-          .toList(),
+      children: [
+        Column(
+          children: widget.obj
+              .map((game) => _gameItemInfo(context, game.title, game.icon,
+                  game.score, game.winnerCup, game.percentAchieve))
+              .toList(),
+        ),
+      ],
     );
   }
 }

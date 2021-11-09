@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:image_stack/image_stack.dart';
+import 'package:lab_2_try/main_view/home.dart';
 import 'package:lab_2_try/social_view/element/utils.dart';
+import 'package:lab_2_try/actions.dart';
 
 import '../../object/friends_obj.dart';
+import '../../object/profile_obj.dart';
+import '../../states.dart';
 
 class OnlineFriends extends StatelessWidget {
   const OnlineFriends({Key? key}) : super(key: key);
@@ -27,27 +32,33 @@ class OnlineFriends extends StatelessWidget {
                 SizedBox(height: 5),
                 SuggestionFriends(),
                 SizedBox(height: 5),
-                StyledText("Offline", 25.0, Color(0xFFFFFFFF), FontWeight.w400),
-                SizedBox(height: 30)
               ],
             )));
   }
 }
 
 class OfflineFriends extends StatelessWidget {
-  const OfflineFriends({Key? key}) : super(key: key);
+  OfflineFriends(this.isVisible);
+
+  final bool isVisible;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return (isVisible) ? SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
-        children: friends
-            .map((friend) => _friendCard(
+        children: [
+          const StyledText("Offline", 25.0, Color(0xFFFFFFFF), FontWeight.w400),
+          const SizedBox(height: 30),
+          Column(
+            children: friends
+                .map((friend) => _friendCard(
                 context, friend.nickname, friend.imgLink, friend.onlineStatus))
-            .toList(),
-      ),
-    );
+                .toList(),
+          ),
+        ],
+      )
+    ) : Container();
   }
 
   Widget _friendCard(BuildContext context, String nickname, String imgLink,
@@ -59,12 +70,12 @@ class OfflineFriends extends StatelessWidget {
     double orientationDistanceForNickName =
         (MediaQuery.of(context).orientation == Orientation.landscape)
             ? 400
-            : 180;
+            : 90;
     return Container(
       padding: orientationPadding,
       child: Row(
         children: [
-          _friendAvatar(context, imgLink),
+          _avatar(context, imgLink, const Color(0xFF311B92)),
           Expanded(
               child: Column(
             children: [
@@ -80,13 +91,14 @@ class OfflineFriends extends StatelessWidget {
     );
   }
 
-  Widget _friendAvatar(BuildContext context, String imgLink) {
-    return CircleAvatar(
-      radius: 35,
-      backgroundColor: const Color(0xFF311B92),
-      child: CircleAvatar(radius: 33, backgroundImage: AssetImage(imgLink)),
-    );
-  }
+}
+
+Widget _avatar(BuildContext context, String imgLink, Color color) {
+  return CircleAvatar(
+    radius: 36,
+    backgroundColor: color,
+    child: CircleAvatar(radius: 33, backgroundImage: AssetImage(imgLink)),
+  );
 }
 
 class SuggestionFriends extends StatelessWidget {
@@ -140,4 +152,57 @@ class StackedImages extends StatelessWidget {
       imageCount: 2,
     );
   }
+}
+
+Widget myStatus() {
+  final myProfile = profile;
+  return StoreConnector<StatusState, String>(
+
+    converter: (store) => store.state.status.toString(),
+
+    builder: (context, viewModel) {
+      double orientationDistanceForNickName =
+      (MediaQuery.of(context).orientation == Orientation.landscape)
+          ? 400
+          : 90;
+      return Container(
+        padding: (MediaQuery.of(context).orientation == Orientation.landscape)
+                    ? const EdgeInsets.only(left: 50, bottom: 10, right: 50)
+                    : const EdgeInsets.only(left: 30, bottom: 10, right: 30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            (viewModel == "true")
+                ? _avatar(context, myProfile.avatar, const Color(0xFF388E3C))
+                : _avatar(context, myProfile.avatar, const Color(0xFF311B92)),
+            Expanded(
+              child: StyledText(parseBool(viewModel) ? "Online" : "Offline", 20.0,
+                  const Color(0xFF9E9E9E), FontWeight.w500),
+            ),
+            changeStatusBtn(context, parseBool(viewModel)),
+          ],
+        )
+      );
+    }
+  );
+}
+
+Widget changeStatusBtn(BuildContext context, bool isOnline) {
+  return StoreConnector<StatusState, OnStatusChanged> (
+    converter: (store) {
+      return (status) => store.dispatch(OnlineAction(status));
+    },
+    builder: (context, callback) {
+      return FloatingActionButton(
+        child: const Icon(Icons.refresh),
+        onPressed: () => callback(isOnline),
+        backgroundColor: Colors.blueGrey
+      );
+  }
+
+  );
+}
+
+bool parseBool(String value) {
+  return value.toLowerCase() == 'true';
 }
