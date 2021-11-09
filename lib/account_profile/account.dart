@@ -6,7 +6,6 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lab_2_try/account_profile/element/filter_section.dart';
 import 'package:lab_2_try/account_profile/element/first_img_section.dart';
-import 'package:lab_2_try/account_profile/element/game_achieve_list.dart';
 import 'package:lab_2_try/account_profile/element/rank_section.dart';
 import 'package:lab_2_try/navigation/bottom_navigation.dart';
 import 'package:lab_2_try/settings/settings_view.dart';
@@ -38,7 +37,7 @@ Widget _totalScore() {
       alignment: Alignment.centerLeft,
       child: Row(
         children: [
-           const Icon(
+          const Icon(
             Icons.score_outlined,
             size: 28,
             color: Colors.white,
@@ -77,8 +76,8 @@ class Account extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-              child: _iconAppBar(
-                  context, "assets/images/img_settings_btn.png", orientationWidth)),
+              child: _iconAppBar(context, "assets/images/img_settings_btn.png",
+                  orientationWidth)),
         ),
       ),
       extendBodyBehindAppBar: true,
@@ -93,8 +92,8 @@ class Account extends StatelessWidget {
                   children: [
                     _totalScore(),
                     const RankSection(),
-                    const FilterSection(),
-                    const GameAchieveSection()
+                    const FilterSection()
+                    // const GameAchieveSection()
                   ],
                 ),
               )
