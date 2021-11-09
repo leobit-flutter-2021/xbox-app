@@ -112,7 +112,7 @@ Widget _appearButton(bool state, String text, Size phoneSize, double fontSize) {
           ),
         ),
         onTap: () {
-          callback(callback(state));
+         callback(state);
         },
       );
     },
