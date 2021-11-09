@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget _iconAppBar(BuildContext context, String icon, double width) {
-  double orientationWidth =
-      (MediaQuery.of(context).orientation == Orientation.landscape) ? 0.4 : 1;
+  double orientationWidth = (MediaQuery.of(context).orientation == Orientation.landscape) ? 0.4 : 1;
   return Container(
     margin: const EdgeInsets.only(
       left: 10.0,
@@ -40,6 +39,8 @@ class AppBarNavigation extends StatelessWidget {
                       context, "assets/images/img_notification.png", heightDevice.width)
                 ],
               )
-            ]));
+            ]
+        )
+    );
   }
 }
