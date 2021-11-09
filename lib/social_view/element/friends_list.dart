@@ -32,27 +32,33 @@ class OnlineFriends extends StatelessWidget {
                 SizedBox(height: 5),
                 SuggestionFriends(),
                 SizedBox(height: 5),
-                StyledText("Offline", 25.0, Color(0xFFFFFFFF), FontWeight.w400),
-                SizedBox(height: 30)
               ],
             )));
   }
 }
 
 class OfflineFriends extends StatelessWidget {
-  const OfflineFriends({Key? key}) : super(key: key);
+  OfflineFriends(this.isVisible);
+
+  final bool isVisible;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return (isVisible) ? SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
-        children: friends
-            .map((friend) => _friendCard(
+        children: [
+          const StyledText("Offline", 25.0, Color(0xFFFFFFFF), FontWeight.w400),
+          const SizedBox(height: 30),
+          Column(
+            children: friends
+                .map((friend) => _friendCard(
                 context, friend.nickname, friend.imgLink, friend.onlineStatus))
-            .toList(),
-      ),
-    );
+                .toList(),
+          ),
+        ],
+      )
+    ) : Container();
   }
 
   Widget _friendCard(BuildContext context, String nickname, String imgLink,
