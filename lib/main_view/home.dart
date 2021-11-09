@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:lab_2_try/navigation/app_bar_navigation.dart';
 import 'package:lab_2_try/navigation/bottom_navigation.dart';
 
-import '../states.dart';
 import 'element/circle_img_text.dart';
 import 'element/picture_with_description.dart';
-import 'element/small_picture.dart';
-import 'package:lab_2_try/actions.dart' as action;
 import 'element/row_with_status.dart';
+import 'element/small_picture.dart';
 
-Widget _textContainer(BuildContext context, String mainText, String secondText) {
+Widget _textContainer(
+    BuildContext context, String mainText, String secondText) {
   return Container(
     margin: const EdgeInsets.all(12.0),
     child: Row(
@@ -40,29 +38,31 @@ class _HomePageState extends State<HomePage> {
   bool _lowerGraphics = false;
   bool _effects = false;
 
-  Widget _settingsContainer(bool graphics, bool ) {
+  Widget _settingsContainer(bool graphics, bool) {
     return Container(
       margin: const EdgeInsets.all(12.0),
       child: Column(
         children: [
           Row(
             children: [
-              const Text(
-                "Effects",
-                style: TextStyle(color: Colors.white, fontSize: 18)),
+              const Text("Effects",
+                  style: TextStyle(color: Colors.white, fontSize: 18)),
               IconButton(
-                  icon: (_effects ? const Icon(Icons.check_box) : const Icon(Icons.check_box_outline_blank)),
+                  icon: (_effects
+                      ? const Icon(Icons.check_box)
+                      : const Icon(Icons.check_box_outline_blank)),
                   onPressed: _toggleEffects,
                   color: Colors.white),
             ],
           ),
           Row(
             children: [
-              const Text(
-                  "Disable distance rendering",
+              const Text("Disable distance rendering",
                   style: TextStyle(color: Colors.white, fontSize: 18)),
               IconButton(
-                  icon: (_lowerGraphics ? const Icon(Icons.check_box) : const Icon(Icons.check_box_outline_blank)),
+                  icon: (_lowerGraphics
+                      ? const Icon(Icons.check_box)
+                      : const Icon(Icons.check_box_outline_blank)),
                   onPressed: _toggleGraphics,
                   color: Colors.white),
             ],
@@ -90,30 +90,6 @@ class _HomePageState extends State<HomePage> {
         _lowerGraphics = true;
       }
     });
-  }
-
-  Widget statusButton(stat) {
-    return StoreConnector<StatusState, OnStatusChanged>(
-      converter: (store) {
-        return (status) => store.dispatch(action.OnlineAction(status));
-      },
-      builder: (context, callback) {
-        return FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () => callback(stat));
-      },
-    );
-  }
-
-  Widget statusShow() {
-    return StoreConnector<StatusState, String>(
-      converter: (store) => store.state.status.toString(),
-      builder: (context, viewModel) {
-        return Text(
-            viewModel,
-            style: const TextStyle(color: Colors.white));
-      },
-    );
   }
 
   @override
